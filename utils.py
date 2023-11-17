@@ -22,14 +22,14 @@ def parse_args():
 def prepare_dataset(path_name):
     # load kold data fetched from :
     # https://github.com/boychaboy/KOLD/blob/main/data/kold_v1.json
-    with open(path_name, mode='r') as file:
+    with open(path_name, mode='r', encoding='utf-8') as file:
         json_file = file.read()
     json_list = json.loads(json_file)
 
     # concat title and comment and append to dataset list
     # we simply do a contatenation of title and comment as a sentence
     dataset_list = [data['title'] + ' ' + data['comment'] for data in json_list]
-
+    
     # dataset_list to Dataset
     def gen():
         for i in dataset_list:
