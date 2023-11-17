@@ -128,6 +128,8 @@ ENV/
 env.bak/
 venv.bak/
 kold_v1.json
+__pycache__
+runs
 .gitignore
 
 # Spyder project settings
