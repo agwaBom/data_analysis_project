@@ -1,0 +1,40 @@
+INFO:root:{'batch_size': 64, 'model_path': './model_weight', 'tensorboard_path': './runs/bert_for_classification', 'pretrained_model_name_or_path': 'bert-base-uncased', 'logger_path': 'log.txt', 'seed': 123, 'learning_rate': 1e-05, 'num_epochs': 10}
+WARNING:datasets.builder:Found cached dataset generator (/home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0)
+WARNING:datasets.arrow_dataset:Loading cached split indices for dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2f68c3264539b39d.arrow and /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2a2f814774a9a3eb.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-d608744e6a3eed9a.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-0172c5e9bf6a1104.arrow
+INFO:root:Epoch : 0
+
+INFO:root:=====Training Phase=====
+INFO:root:{'batch_size': 64, 'model_path': './model_weight', 'tensorboard_path': './runs/bert_for_classification', 'pretrained_model_name_or_path': 'bert-base-uncased', 'logger_path': 'log.txt', 'seed': 123, 'learning_rate': 1e-05, 'num_epochs': 10}
+WARNING:datasets.builder:Found cached dataset generator (/home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0)
+WARNING:datasets.arrow_dataset:Loading cached split indices for dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2f68c3264539b39d.arrow and /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2a2f814774a9a3eb.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-d608744e6a3eed9a.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-0172c5e9bf6a1104.arrow
+INFO:root:Epoch : 0
+
+INFO:root:=====Training Phase=====
+INFO:root:{'batch_size': 64, 'model_path': './model_weight', 'tensorboard_path': './runs/bert_for_classification', 'pretrained_model_name_or_path': 'bert-base-uncased', 'logger_path': 'log.txt', 'seed': 123, 'learning_rate': 1e-05, 'num_epochs': 10}
+WARNING:datasets.builder:Found cached dataset generator (/home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0)
+WARNING:datasets.arrow_dataset:Loading cached split indices for dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2f68c3264539b39d.arrow and /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2a2f814774a9a3eb.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-d608744e6a3eed9a.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-0172c5e9bf6a1104.arrow
+INFO:root:Epoch : 0
+
+INFO:root:=====Training Phase=====
+INFO:root:{'batch_size': 64, 'model_path': './model_weight', 'tensorboard_path': './runs/bert_for_classification', 'pretrained_model_name_or_path': 'bert-base-uncased', 'logger_path': 'log.txt', 'seed': 123, 'learning_rate': 1e-05, 'num_epochs': 10}
+WARNING:datasets.builder:Found cached dataset generator (/home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0)
+INFO:root:{'batch_size': 64, 'model_path': './model_weight', 'tensorboard_path': './runs/bert_for_classification', 'pretrained_model_name_or_path': 'bert-base-uncased', 'logger_path': 'log.txt', 'seed': 123, 'learning_rate': 1e-05, 'num_epochs': 10}
+WARNING:datasets.builder:Found cached dataset generator (/home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0)
+WARNING:datasets.arrow_dataset:Loading cached split indices for dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2f68c3264539b39d.arrow and /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2a2f814774a9a3eb.arrow
+INFO:root:Epoch : 0
+
+INFO:root:=====Training Phase=====
+INFO:root:{'batch_size': 64, 'model_path': './model_weight', 'tensorboard_path': './runs/bert_for_classification', 'pretrained_model_name_or_path': 'bert-base-uncased', 'logger_path': 'log.txt', 'seed': 123, 'learning_rate': 1e-05, 'num_epochs': 10}
+WARNING:datasets.builder:Found cached dataset generator (/home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0)
+WARNING:datasets.arrow_dataset:Loading cached split indices for dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2f68c3264539b39d.arrow and /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2a2f814774a9a3eb.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-c288dd038976fa81.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-0f4bc7e9bcfd840f.arrow
+INFO:root:Epoch : 0
+
+INFO:root:=====Training Phase=====
