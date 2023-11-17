@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     for epoch in range(args.num_epochs):
         logging.info(f"Epoch : {epoch}\n")
-        logging.info("=====Training Phase=====")
+        print("=====Training Phase=====")
         train_loss_sum = 0
         valid_loss_sum = 0
         lowest_loss = sys.float_info.max
@@ -59,16 +59,15 @@ if __name__ == "__main__":
             outputs = model(**batch)
             loss = outputs.loss
             loss.backward()
+            train_loss_sum += loss
             optimizer.step()
             writer.add_scalar('Train step loss', loss, 1+i+len(train_dataloader)*epoch)
             print(f"Step: {i+len(train_dataloader)*epoch} Train step loss: "+"{:.2f}".format(loss)+" Epoch percentage: "+"{:.2f}%".format(round(i/len(train_dataloader), 4)*100))
 
         model.eval()
-        logging.info("=====Validation Phase=====")
+        print("=====Validation Phase=====")
         for batch in tqdm(test_dataloader):
             batch = {k: v.to(device) for k, v in batch.items()}
-            labels = batch['labels']
-            del batch['labels']
             with torch.no_grad():
                 outputs = model(**batch)
                 loss = outputs.loss
@@ -76,7 +75,7 @@ if __name__ == "__main__":
 
         if valid_loss_sum < lowest_loss:
             lowest_loss = valid_loss_sum
-            model.save_pretrained(f'./model_weight/bert_trained_{round(lowest_loss, 2)}')
+            model.save_pretrained('./model_weight/bert_trained_{:.2f}'.format(lowest_loss))
 
         writer.add_scalar('Train epoch loss', train_loss_sum/len(train_dataloader), epoch)
         writer.add_scalar('Valid epoch loss', valid_loss_sum/len(test_dataloader), epoch)
