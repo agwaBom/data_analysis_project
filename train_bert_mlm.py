@@ -10,6 +10,7 @@ from transformers import BertTokenizer, BertModel, BertForMaskedLM, AdamW, DataC
 import logging
 import sys
 from tqdm import tqdm
+import shutil
 
 def tokenize_function(ex):
     return tokenizer([sequence for sequence in ex['sentence']], truncation=True)
@@ -43,13 +44,12 @@ if __name__ == "__main__":
     train_dataloader = DataLoader(dataset['train'], batch_size=args.batch_size, collate_fn=data_collator)
     test_dataloader = DataLoader(dataset['test'], batch_size=args.batch_size, collate_fn=data_collator)
 
-
+    lowest_loss = sys.float_info.max
     for epoch in range(args.num_epochs):
         logging.info(f"Epoch : {epoch}\n")
         print("=====Training Phase=====")
         train_loss_sum = 0
         valid_loss_sum = 0
-        lowest_loss = sys.float_info.max
 
         model.train()
         for i, batch in enumerate(train_dataloader):
@@ -74,7 +74,8 @@ if __name__ == "__main__":
 
         if valid_loss_sum < lowest_loss:
             # Delete previous model
-            os.rmdir(args.model_save_path+'/bert_trained_{:.2f}'.format(lowest_loss/len(test_dataloader)))
+            if lowest_loss != sys.float_info.max:
+                shutil.rmtree(args.model_save_path+'/bert_trained_{:.2f}'.format(lowest_loss/len(test_dataloader)))
             
             # Save new model
             lowest_loss = valid_loss_sum

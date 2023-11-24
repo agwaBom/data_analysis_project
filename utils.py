@@ -26,7 +26,7 @@ def parse_train_args():
     parser.add_argument("--logger_path", type=str, default="train_log.txt")
     parser.add_argument("--seed", type=int, default=123)
     parser.add_argument("--learning_rate", type=float, default=1e-5)
-    parser.add_argument("--num_epochs", type=int, default=10)
+    parser.add_argument("--num_epochs", type=int, default=50)
 
 
     args = parser.parse_args()

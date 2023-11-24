@@ -1,4 +1,4 @@
-INFO:root:{'batch_size': 64, 'model_save_path': './model_weight/kcbert-base-kobert-mlm', 'tensorboard_path': './runs/kcbert-base-kobert-mlm', 'pretrained_model_name_or_path': 'beomi/kcbert-base', 'logger_path': 'train_log.txt', 'seed': 123, 'learning_rate': 1e-05, 'num_epochs': 10}
+INFO:root:{'batch_size': 64, 'model_save_path': './model_weight/kcbert-base-kold-mlm', 'tensorboard_path': './runs/kcbert-base-kold-mlm', 'pretrained_model_name_or_path': 'beomi/kcbert-base', 'logger_path': 'train_log.txt', 'seed': 123, 'learning_rate': 1e-05, 'num_epochs': 50}
 WARNING:datasets.builder:Found cached dataset generator (/home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0)
 WARNING:datasets.arrow_dataset:Loading cached split indices for dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2f68c3264539b39d.arrow and /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2a2f814774a9a3eb.arrow
 WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-5bc88ecdaae61460.arrow
@@ -33,3 +33,123 @@ INFO:root:### Train epoch loss: 2.1217715740203857  ### Valid epoch loss: 2.0970
 INFO:root:Epoch : 9
 
 INFO:root:### Train epoch loss: 2.064960479736328  ### Valid epoch loss: 2.0743565559387207
+INFO:root:Epoch : 10
+
+INFO:root:### Train epoch loss: 2.018555164337158  ### Valid epoch loss: 2.016583204269409
+INFO:root:Epoch : 11
+
+INFO:root:### Train epoch loss: 1.9755194187164307  ### Valid epoch loss: 1.9786814451217651
+INFO:root:Epoch : 12
+
+INFO:root:### Train epoch loss: 1.9443678855895996  ### Valid epoch loss: 1.9391517639160156
+INFO:root:Epoch : 13
+
+INFO:root:### Train epoch loss: 1.9053168296813965  ### Valid epoch loss: 1.9817463159561157
+INFO:root:Epoch : 14
+
+INFO:root:### Train epoch loss: 1.8723262548446655  ### Valid epoch loss: 1.9162381887435913
+INFO:root:Epoch : 15
+
+INFO:root:### Train epoch loss: 1.8424302339553833  ### Valid epoch loss: 1.9300328493118286
+INFO:root:Epoch : 16
+
+INFO:root:### Train epoch loss: 1.8110407590866089  ### Valid epoch loss: 1.914631962776184
+INFO:root:Epoch : 17
+
+INFO:root:### Train epoch loss: 1.795507788658142  ### Valid epoch loss: 1.877418041229248
+INFO:root:Epoch : 18
+
+INFO:root:### Train epoch loss: 1.7622367143630981  ### Valid epoch loss: 1.8694231510162354
+INFO:root:Epoch : 19
+
+INFO:root:### Train epoch loss: 1.738478422164917  ### Valid epoch loss: 1.8768631219863892
+INFO:root:Epoch : 20
+
+INFO:root:### Train epoch loss: 1.7126208543777466  ### Valid epoch loss: 1.8396342992782593
+INFO:root:Epoch : 21
+
+INFO:root:### Train epoch loss: 1.6991262435913086  ### Valid epoch loss: 1.8549169301986694
+INFO:root:Epoch : 22
+
+INFO:root:### Train epoch loss: 1.6761268377304077  ### Valid epoch loss: 1.8620203733444214
+INFO:root:Epoch : 23
+
+INFO:root:### Train epoch loss: 1.6546107530593872  ### Valid epoch loss: 1.8185806274414062
+INFO:root:Epoch : 24
+
+INFO:root:### Train epoch loss: 1.6289499998092651  ### Valid epoch loss: 1.7747175693511963
+INFO:root:Epoch : 25
+
+INFO:root:### Train epoch loss: 1.626252293586731  ### Valid epoch loss: 1.7932136058807373
+INFO:root:Epoch : 26
+
+INFO:root:### Train epoch loss: 1.5970818996429443  ### Valid epoch loss: 1.8242583274841309
+INFO:root:Epoch : 27
+
+INFO:root:### Train epoch loss: 1.5852913856506348  ### Valid epoch loss: 1.7907384634017944
+INFO:root:Epoch : 28
+
+INFO:root:### Train epoch loss: 1.5676565170288086  ### Valid epoch loss: 1.7839492559432983
+INFO:root:Epoch : 29
+
+INFO:root:### Train epoch loss: 1.5540499687194824  ### Valid epoch loss: 1.7925485372543335
+INFO:root:Epoch : 30
+
+INFO:root:### Train epoch loss: 1.5382119417190552  ### Valid epoch loss: 1.8146886825561523
+INFO:root:Epoch : 31
+
+INFO:root:### Train epoch loss: 1.5308640003204346  ### Valid epoch loss: 1.781733751296997
+INFO:root:Epoch : 32
+
+INFO:root:### Train epoch loss: 1.5082262754440308  ### Valid epoch loss: 1.7341511249542236
+INFO:root:Epoch : 33
+
+INFO:root:### Train epoch loss: 1.4983593225479126  ### Valid epoch loss: 1.7840975522994995
+INFO:root:Epoch : 34
+
+INFO:root:### Train epoch loss: 1.482546329498291  ### Valid epoch loss: 1.7392334938049316
+INFO:root:Epoch : 35
+
+INFO:root:### Train epoch loss: 1.468910813331604  ### Valid epoch loss: 1.7800225019454956
+INFO:root:Epoch : 36
+
+INFO:root:### Train epoch loss: 1.447709321975708  ### Valid epoch loss: 1.7545197010040283
+INFO:root:Epoch : 37
+
+INFO:root:### Train epoch loss: 1.442484974861145  ### Valid epoch loss: 1.7736164331436157
+INFO:root:Epoch : 38
+
+INFO:root:### Train epoch loss: 1.4296412467956543  ### Valid epoch loss: 1.7619993686676025
+INFO:root:Epoch : 39
+
+INFO:root:### Train epoch loss: 1.4199941158294678  ### Valid epoch loss: 1.7395719289779663
+INFO:root:Epoch : 40
+
+INFO:root:### Train epoch loss: 1.406176209449768  ### Valid epoch loss: 1.7411566972732544
+INFO:root:Epoch : 41
+
+INFO:root:### Train epoch loss: 1.3900506496429443  ### Valid epoch loss: 1.75479257106781
+INFO:root:Epoch : 42
+
+INFO:root:### Train epoch loss: 1.3850061893463135  ### Valid epoch loss: 1.7339239120483398
+INFO:root:Epoch : 43
+
+INFO:root:### Train epoch loss: 1.3843971490859985  ### Valid epoch loss: 1.741684913635254
+INFO:root:Epoch : 44
+
+INFO:root:### Train epoch loss: 1.3699404001235962  ### Valid epoch loss: 1.7279796600341797
+INFO:root:Epoch : 45
+
+INFO:root:### Train epoch loss: 1.3590978384017944  ### Valid epoch loss: 1.7527287006378174
+INFO:root:Epoch : 46
+
+INFO:root:### Train epoch loss: 1.3413597345352173  ### Valid epoch loss: 1.7313581705093384
+INFO:root:Epoch : 47
+
+INFO:root:### Train epoch loss: 1.3341357707977295  ### Valid epoch loss: 1.7395251989364624
+INFO:root:Epoch : 48
+
+INFO:root:### Train epoch loss: 1.3161753416061401  ### Valid epoch loss: 1.763683557510376
+INFO:root:Epoch : 49
+
+INFO:root:### Train epoch loss: 1.3068104982376099  ### Valid epoch loss: 1.731308102607727
