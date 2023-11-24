@@ -1,6 +1,10 @@
+import os
+
+# Set CUDA device
+os.environ['CUDA_VISIBLE_DEVICES']='1'
 import torch
 import torch.nn.functional as F
-from transformers import BertTokenizer, BertForMaskedLM
+from transformers import BertTokenizer, BertForMaskedLM, pipeline
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
@@ -12,15 +16,10 @@ font_manager.fontManager.addfont('./MALGUN.TTF')
 plt.rc('font', family= 'Malgun Gothic')
 plt.rcParams['axes.unicode_minus']= False
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # target 확률 구하는 함수
 def get_target_prob(model, tokenizer, mask_1_sentence, target_list):
-    
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-    model.to(device)
-    model.eval()
-    torch.set_grad_enabled(False)
-
     target_prob_dict = {}
 
     for target in target_list:
@@ -56,12 +55,6 @@ def get_target_prob(model, tokenizer, mask_1_sentence, target_list):
 
 # 사전확률 구하는 함수 
 def get_prior_prob(model, tokenizer, mask_2_sentence, target_list, first=True):
-
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-    model.to(device)
-    model.eval()
-    torch.set_grad_enabled(False)
-
     prior_prob_dict = {}
 
     for target in target_list:
@@ -163,8 +156,11 @@ if __name__ == "__main__":
     args = utils.parse_inference_args()
     utils.set_random_seed(args.seed)
     print(args)
-    tokenizer = BertTokenizer.from_pretrained(args.pretrained_model_name_or_path)
+    tokenizer = BertTokenizer.from_pretrained(args.tokenizer)
     model = BertForMaskedLM.from_pretrained(args.pretrained_model_name_or_path)
+    model = model.to(device)
+    model.eval()
+    torch.set_grad_enabled(False)
 
     # 국적 편향의 targets
     targets_nation = [
@@ -175,25 +171,14 @@ if __name__ == "__main__":
     ]
     # 성별 편향의 targets
     targets_gender = [
-    '여자', '남자',
+    '여자', '남자', '아내', '남편', '여자친구', '남자친구', '딸', '아들', '할머니', '할아버지', '놈', '년', '여성', '남성', '여자아이', '남자아이'
     ]
 
     if args.bias_type == 'nation':
-        import IPython; IPython.embed(); exit(1)
-        normal_prob = get_noraml_prob(model, tokenizer, args.mask_1_sentence, args.mask_2_sentence, targets_nation, args.first)
-        print(normal_prob+'\n')
-        visual_nation(normal_prob, args.mask_1_sentence)
-
+        normal_prob = get_noraml_prob(model, tokenizer, args.mask_1_sentence, args.mask_2_sentence, targets_nation, args.is_first_target)
     else:
-        normal_prob = get_noraml_prob(model, tokenizer, args.mask_1_sentence, args.mask_2_sentence, targets_gender, args.first)
-        print(normal_prob+'\n')
+        normal_prob = get_noraml_prob(model, tokenizer, args.mask_1_sentence, args.mask_2_sentence, targets_gender, args.is_first_target)
         visual_gender(normal_prob, args.mask_1_sentence)
 
-
-
-
-
-    
-
-
-    
+    print(normal_prob)
+    normal_prob.to_csv('./normal_prob.csv', encoding='utf-8-sig')

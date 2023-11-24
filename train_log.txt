@@ -1,0 +1,35 @@
+INFO:root:{'batch_size': 64, 'model_save_path': './model_weight/kcbert-base-kobert-mlm', 'tensorboard_path': './runs/kcbert-base-kobert-mlm', 'pretrained_model_name_or_path': 'beomi/kcbert-base', 'logger_path': 'train_log.txt', 'seed': 123, 'learning_rate': 1e-05, 'num_epochs': 10}
+WARNING:datasets.builder:Found cached dataset generator (/home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0)
+WARNING:datasets.arrow_dataset:Loading cached split indices for dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2f68c3264539b39d.arrow and /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-2a2f814774a9a3eb.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-5bc88ecdaae61460.arrow
+WARNING:datasets.arrow_dataset:Loading cached processed dataset at /home/khyunjin1993/.cache/huggingface/datasets/generator/default-5dfe53cced1701c0/0.0.0/cache-3c5d8b4197766aa9.arrow
+INFO:root:Epoch : 0
+
+INFO:root:### Train epoch loss: 3.1949143409729004  ### Valid epoch loss: 2.82039737701416
+INFO:root:Epoch : 1
+
+INFO:root:### Train epoch loss: 2.8520288467407227  ### Valid epoch loss: 2.6430468559265137
+INFO:root:Epoch : 2
+
+INFO:root:### Train epoch loss: 2.6635560989379883  ### Valid epoch loss: 2.4991331100463867
+INFO:root:Epoch : 3
+
+INFO:root:### Train epoch loss: 2.5198450088500977  ### Valid epoch loss: 2.3457136154174805
+INFO:root:Epoch : 4
+
+INFO:root:### Train epoch loss: 2.419018507003784  ### Valid epoch loss: 2.3015880584716797
+INFO:root:Epoch : 5
+
+INFO:root:### Train epoch loss: 2.3324830532073975  ### Valid epoch loss: 2.2091872692108154
+INFO:root:Epoch : 6
+
+INFO:root:### Train epoch loss: 2.2409846782684326  ### Valid epoch loss: 2.2042603492736816
+INFO:root:Epoch : 7
+
+INFO:root:### Train epoch loss: 2.1652698516845703  ### Valid epoch loss: 2.120767593383789
+INFO:root:Epoch : 8
+
+INFO:root:### Train epoch loss: 2.1217715740203857  ### Valid epoch loss: 2.0970849990844727
+INFO:root:Epoch : 9
+
+INFO:root:### Train epoch loss: 2.064960479736328  ### Valid epoch loss: 2.0743565559387207

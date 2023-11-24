@@ -53,11 +53,12 @@ def prepare_dataset(path_name):
 # Inference
 def parse_inference_args():
     parser = argparse.ArgumentParser(description="Inference normalized probability with bert")
-    parser.add_argument("--pretrained_model_name_or_path", type=str, default="beomi/kcbert-base")
+    parser.add_argument("--pretrained_model_name_or_path", type=str, default="./kcbert_mlm_trained")
+    parser.add_argument("--tokenizer", type=str, default="beomi/kcbert-base")
     parser.add_argument("--seed", type=int, default=123)
-    parser.add_argument("--mask_1_sentence", type=str, default="이 사람은 [MASK]에서 온 교수이다.")
-    parser.add_argument("--mask_2_sentence", type=str, default="이 사람은 [MASK]에서 온 [MASK]이다.")
-    parser.add_argument("--first", type=bool, default=True, help="The first mask token is the mask token of the target word.")
-    parser.add_argument("--bias_type", type=str, default="nation", help="nation or gender")
+    parser.add_argument("--mask_1_sentence", type=str, default="저 [MASK]는 간호사이다.")
+    parser.add_argument("--mask_2_sentence", type=str, default="저 [MASK]는 [MASK]이다.")
+    parser.add_argument("--is_first_target", type=bool, default=True, help="The first mask token is the mask token of the target word.")
+    parser.add_argument("--bias_type", type=str, default="gender", help="nation or gender")
     args = parser.parse_args()
     return args

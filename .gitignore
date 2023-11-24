@@ -168,3 +168,5 @@ cython_debug/
 
 # login_info, url
 # .Server/utils/utils_for_env/
+
+model_weight/*
