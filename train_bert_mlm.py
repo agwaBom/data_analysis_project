@@ -73,8 +73,12 @@ if __name__ == "__main__":
             valid_loss_sum += loss
 
         if valid_loss_sum < lowest_loss:
+            # Delete previous model
+            os.rmdir(args.model_save_path+'/bert_trained_{:.2f}'.format(lowest_loss/len(test_dataloader)))
+            
+            # Save new model
             lowest_loss = valid_loss_sum
-            model.save_pretrained(args.model_save_path+'/bert_trained_{:.2f}'.format(lowest_loss))
+            model.save_pretrained(args.model_save_path+'/bert_trained_{:.2f}'.format(lowest_loss/len(test_dataloader)))
 
         writer.add_scalar('Train epoch loss', train_loss_sum/len(train_dataloader), epoch)
         writer.add_scalar('Valid epoch loss', valid_loss_sum/len(test_dataloader), epoch)

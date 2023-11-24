@@ -20,8 +20,8 @@ def parse_train_args():
         description='Train a bert classifier on a dataset'
     )
     parser.add_argument("--batch_size", type=int, default=64)
-    parser.add_argument("--model_save_path", type=str, default="./model_weight/kcbert-base-kobert-mlm")
-    parser.add_argument("--tensorboard_path", type=str, default="./runs/kcbert-base-kobert-mlm")
+    parser.add_argument("--model_save_path", type=str, default="./model_weight/kcbert-base-kold-mlm")
+    parser.add_argument("--tensorboard_path", type=str, default="./runs/kcbert-base-kold-mlm")
     parser.add_argument("--pretrained_model_name_or_path", type=str, default="beomi/kcbert-base")
     parser.add_argument("--logger_path", type=str, default="train_log.txt")
     parser.add_argument("--seed", type=int, default=123)
