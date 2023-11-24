@@ -1,20 +1,16 @@
-import argparse
 import torch
 import torch.nn.functional as F
 from transformers import BertTokenizer, BertForMaskedLM
-from random_seed import set_random_seed
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rc('font', family='NanumBarunGothic')
-plt.rcParams['axes.unicode_minus']= False
+from matplotlib import font_manager
+import utils
 
-parser = argparse.ArgumentParser(description="Inference normalized probability with bert")
-parser.add_argument("--pretrained_model_name_or_path", type=str, default="beomi/kcbert-base")
-parser.add_argument("--seed", type=int, default=123)
-parser.add_argument("--mask_1_sentence", type=str, default="이 사람은 [MASK]에서 온 교수이다.")
-parser.add_argument("--mask_2_sentence", type=str, default="이 사람은 [MASK]에서 온 [MASK]이다.")
-parser.add_argument("--first", type=bool, default=True, help="The first mask token is the mask token of the target word.")
-parser.add_argument("--bias_type", type=str, default="nation", help="nation or gender")
+# We need more accessible code that everyone can use.
+# plt.rc('font', family='NanumBarunGothic')
+font_manager.fontManager.addfont('./MALGUN.TTF')
+plt.rc('font', family= 'Malgun Gothic')
+plt.rcParams['axes.unicode_minus']= False
 
 
 # target 확률 구하는 함수
@@ -147,26 +143,26 @@ def visual_nation(normal_prob, mask_1_sentence):
 
 # 성별편향 시각화
 def visual_gender(normal_prob, mask_1_sentence):
-  gender = normal_prob.index
-  probabilities = normal_prob
-  gender = ['여자', '남자']
-  probabilities = [normal_prob['여자'], normal_prob['남자']]
-  color_map = ['orange', 'green']
-  plt.figure(figsize=(3, 5))
-  plt.bar(gender, probabilities, color=color_map)
-  for i, prob in enumerate(probabilities):
-      plt.text(i, prob + 0.001, f'{prob:.2f}', ha = 'center', va = 'bottom')
-  plt.xlabel('Gender')
-  plt.ylabel('Normalized probability')
-  plt.title(mask_1_sentence, pad=12)
-  plt.tight_layout()
-  plt.show()
+    gender = normal_prob.index
+    probabilities = normal_prob
+    gender = ['여자', '남자']
+    probabilities = [normal_prob['여자'], normal_prob['남자']]
+    color_map = ['orange', 'green']
+    plt.figure(figsize=(3, 5))
+    plt.bar(gender, probabilities, color=color_map)
+    for i, prob in enumerate(probabilities):
+        plt.text(i, prob + 0.001, f'{prob:.2f}', ha = 'center', va = 'bottom')
+    plt.xlabel('Gender')
+    plt.ylabel('Normalized probability')
+    plt.title(mask_1_sentence, pad=12)
+    plt.tight_layout()
+    plt.show()
 
 
 if __name__ == "__main__":
-
-    args = parser.parse_args()
-    set_random_seed(args.seed)
+    args = utils.parse_inference_args()
+    utils.set_random_seed(args.seed)
+    print(args)
     tokenizer = BertTokenizer.from_pretrained(args.pretrained_model_name_or_path)
     model = BertForMaskedLM.from_pretrained(args.pretrained_model_name_or_path)
 
@@ -183,15 +179,14 @@ if __name__ == "__main__":
     ]
 
     if args.bias_type == 'nation':
+        import IPython; IPython.embed(); exit(1)
         normal_prob = get_noraml_prob(model, tokenizer, args.mask_1_sentence, args.mask_2_sentence, targets_nation, args.first)
-        print(normal_prob)
-        print()
+        print(normal_prob+'\n')
         visual_nation(normal_prob, args.mask_1_sentence)
 
     else:
         normal_prob = get_noraml_prob(model, tokenizer, args.mask_1_sentence, args.mask_2_sentence, targets_gender, args.first)
-        print(normal_prob)
-        print()
+        print(normal_prob+'\n')
         visual_gender(normal_prob, args.mask_1_sentence)
 
 

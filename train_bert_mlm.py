@@ -10,15 +10,14 @@ from transformers import BertTokenizer, BertModel, BertForMaskedLM, AdamW, DataC
 import logging
 import sys
 from tqdm import tqdm
-from random_seed import set_random_seed
 
 def tokenize_function(ex):
     return tokenizer([sequence for sequence in ex['sentence']], truncation=True)
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    args = utils.parse_args()
-    set_random_seed(random_seed=args.seed)
+    args = utils.parse_train_args()
+    utils.set_random_seed(random_seed=args.seed)
     handlers = [logging.FileHandler(args.logger_path), logging.StreamHandler(sys.stdout)]
     logging.basicConfig(handlers=handlers, level=logging.INFO)
     
@@ -75,7 +74,7 @@ if __name__ == "__main__":
 
         if valid_loss_sum < lowest_loss:
             lowest_loss = valid_loss_sum
-            model.save_pretrained('./model_weight/bert_trained_{:.2f}'.format(lowest_loss))
+            model.save_pretrained(args.model_save_path+'/bert_trained_{:.2f}'.format(lowest_loss))
 
         writer.add_scalar('Train epoch loss', train_loss_sum/len(train_dataloader), epoch)
         writer.add_scalar('Valid epoch loss', valid_loss_sum/len(test_dataloader), epoch)
