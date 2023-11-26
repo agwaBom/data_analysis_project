@@ -119,35 +119,82 @@ def get_noraml_prob(model, tokenizer, mask_1_sentence, mask_2_sentence, target_l
 
 # 국적편향 시각화
 def visual_nation(normal_prob, mask_1_sentence):
-    countries = list(normal_prob.index[:7]) + ['Others']
+    countries = list(normal_prob.index[:7]) + ['Others(24개국)']
     list_7 = list(normal_prob.values[:7])
     list_7.append(normal_prob[7:].sum())
     probabilities = list_7
-    color_map = ['red', 'green', 'orange', 'blue', 'purple', 'brown', 'pink', 'grey']
-    plt.figure(figsize=(10, 4))
-    plt.bar(countries, probabilities, color=color_map)
-    for i, prob in enumerate(probabilities):
-        plt.text(i, prob + 0.00001, f'{prob:.2f}', ha = 'center', va = 'bottom')
-    plt.xlabel('Countries')
-    plt.ylabel('Normalized probability')
-    plt.title(mask_1_sentence, pad=12)
+    colors = ['red', 'green', 'orange', 'blue', 'purple', 'brown', 'pink', 'grey']
+    # stacked bar 차트를 위해 각 영역의 시작점 계산
+    starts = np.cumsum([0] + probabilities[:-1])
+    fig, ax = plt.subplots(figsize=(10, 1)) 
+    for i, (color, start, prob) in enumerate(zip(colors, starts, probabilities)):
+        ax.barh(' ', prob, left=start, color=color, edgecolor='black')
+        ax.text(start + prob/2, 0, f"{prob:.2f}", ha='center', va='center', color='white', fontsize=10)
+
+    ax.set_xticks(starts + np.array(probabilities)/2)
+    ax.set_xticklabels(countries, rotation=45, ha='right')
+    ax.set_xlim(0, starts[-1] + probabilities[-1])
+    ax2 = ax.twiny()
+    ax2.set_xlim(ax.get_xlim()) 
+    ax2.set_xticks([0, 1])  
+    ax2.set_xticklabels(['0', '1'])  
+    ax2.set_xlabel('Normalized probability')
+    ax.yaxis.set_ticks([])
+    ax.set_title(mask_1_sentence, pad=20)  
+    for spine in ax.spines.values():
+        spine.set_visible(False)
     plt.tight_layout()
     plt.show()
 
 # 성별편향 시각화
 def visual_gender(normal_prob, mask_1_sentence):
-    gender = normal_prob.index
-    probabilities = normal_prob
     gender = ['여자', '남자']
     probabilities = [normal_prob['여자'], normal_prob['남자']]
-    color_map = ['orange', 'green']
-    plt.figure(figsize=(3, 5))
-    plt.bar(gender, probabilities, color=color_map)
-    for i, prob in enumerate(probabilities):
-        plt.text(i, prob + 0.001, f'{prob:.2f}', ha = 'center', va = 'bottom')
-    plt.xlabel('Gender')
-    plt.ylabel('Normalized probability')
-    plt.title(mask_1_sentence, pad=12)
+    colors = ['orange', 'green']
+    starts = np.cumsum([0] + probabilities[:-1])
+    fig, ax = plt.subplots(figsize=(10, 1))
+    for i, (color, start, prob) in enumerate(zip(colors, starts, probabilities)):
+        ax.barh(' ', prob, left=start, color=color, edgecolor='black')
+        ax.text(start + prob/2, 0, f"{prob:.2f}", ha='center', va='center', color='black', fontsize=10)
+
+    ax.set_xticks(starts + np.array(probabilities)/2)
+    ax.set_xticklabels(gender, rotation=45, ha='right')
+    ax.set_xlim(0, starts[-1] + probabilities[-1])
+    ax2 = ax.twiny()
+    ax2.set_xlim(ax.get_xlim())  
+    ax2.set_xticks([0, 1])  
+    ax2.set_xticklabels(['0', '1'])  
+    ax2.set_xlabel('Normalized probability')  
+    ax.yaxis.set_ticks([])
+    ax.set_title(mask_1_sentence, pad=20)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    plt.tight_layout()
+    plt.show()
+
+# 인종편향 시각화
+def visual_race(normal_prob, mask_1_sentence):
+    race = ['백인', '흑인']
+    probabilities = [normal_prob['백인'], normal_prob['흑인']]
+    colors = ['skyblue', 'pink']
+    starts = np.cumsum([0] + probabilities[:-1])
+    fig, ax = plt.subplots(figsize=(10, 1))  
+    for i, (color, start, prob) in enumerate(zip(colors, starts, probabilities)):
+        ax.barh(' ', prob, left=start, color=color, edgecolor='black')
+        ax.text(start + prob/2, 0, f"{prob:.2f}", ha='center', va='center', color='black', fontsize=10)
+
+    ax.set_xticks(starts + np.array(probabilities)/2)
+    ax.set_xticklabels(race, rotation=45, ha='right')
+    ax.set_xlim(0, starts[-1] + probabilities[-1])
+    ax2 = ax.twiny()
+    ax2.set_xlim(ax.get_xlim())  
+    ax2.set_xticks([0, 1])  
+    ax2.set_xticklabels(['0', '1']) 
+    ax2.set_xlabel('Normalized probability')  
+    ax.yaxis.set_ticks([])
+    ax.set_title(mask_1_sentence, pad=20)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
     plt.tight_layout()
     plt.show()
 
